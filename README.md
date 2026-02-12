@@ -1,33 +1,70 @@
 # Item Management REST API – Spring Boot
 
+## Overview
+
 A simple RESTful API built using Spring Boot that manages items using in-memory storage (`ArrayList`).
 
-## Features
-- Add a new item (POST /items)
-- Retrieve an item by ID (GET /items/{id})
-- Input validation using Jakarta Validation
-- Proper HTTP status codes
+The API supports:
+- Adding a new item
+- Retrieving an item by ID
 
-## Running Locally
-mvn spring-boot:run  
-Runs at: http://localhost:8080
+---
 
-## Testing the Deployed Application
+## Live Deployment
 
-Base URL (Railway example):
-https://your-app.up.railway.app
+Base URL:
+https://java-backend-task-production.up.railway.app
 
-### Add Item
+---
+
+## API Endpoints
+
+### 1️⃣ Add Item
+
 POST /items
 
-Body (JSON):
+URL:
+https://java-backend-task-production.up.railway.app/items
+
+Request Body (JSON):
+
 {
   "id": 1,
-  "name": "Laptop",
-  "description": "Gaming device"
+  "name": "Phone",
+  "description": "Flagship device"
 }
 
-### Get Item
-GET /items/1
+Validation:
+- id → required, must be greater than 0  
+- name → required, 3–50 characters  
+- description → optional, max 200 characters  
+
+---
+
+### 2️⃣ Get Item by ID
+
+GET /items/{id}
+
+Example:
+https://java-backend-task-production.up.railway.app/items/1
+
+Responses:
+- 200 OK → Item found  
+- 404 Not Found → Item not found  
+
+---
+
+## Run Locally
+
+mvn spring-boot:run
+
+Runs at:
+http://localhost:8080
+
+---
 
 Note: Data is stored in-memory and resets when the server restarts.
+
+---
+
+Author: Ayush Kumar
